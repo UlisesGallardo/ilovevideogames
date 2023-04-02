@@ -1,7 +1,7 @@
 import React from 'react'
 import {useLocation} from 'react-router-dom';
 import { Container } from 'react-bootstrap';
-import { Bar} from 'react-chartjs-2';
+//import { Bar} from 'react-chartjs-2';
 
 
 function InfoGame() {
@@ -22,13 +22,11 @@ function InfoGame() {
       porcentaje.push(item["percent"])
     }
 
-    
+    //const labels = ['exceptional', 'recommended', 'meh', 'skip'];
+    //const values = ratings.map((item) => item["count"])
+    //console.log(titulos, porcentaje, labels)
 
-    const labels = ['exceptional', 'recommended', 'meh', 'skip'];
-    const values = ratings.map((item) => item["count"])
-    console.log(titulos, porcentaje, labels)
-
-    const data = {
+    /*const data = {
       labels,
       datasets: [
         {
@@ -37,7 +35,7 @@ function InfoGame() {
           backgroundColor: 'rgba(205, 92, 92, 1)',
         }
       ],
-    };
+    };*/
 
     return (
         <Container>

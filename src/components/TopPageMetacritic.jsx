@@ -21,7 +21,6 @@ function TopPageMetacritic() {
     const [currentPage, setCurrentPage] = useState(1);
     const [year, setYear] = useState((new Date()).getFullYear()-1)
     const [startDate, setStartDate] = useState(new Date("01-01-"+year))
-    const [isOpen, setIsOpen] = useState(false);
     const [Games, setGames] = useState([]);
 
     let pages = [...Array(5).keys()].map( i => i+1);
@@ -48,7 +47,6 @@ function TopPageMetacritic() {
         console.log("Año:",anio);
         if(year!==d.anio){
             setStartDate(date);
-            setIsOpen(false);
             setYear(anio);
             restart();
         }
@@ -86,7 +84,7 @@ function TopPageMetacritic() {
                             juegos = response.data["results"];
                             
 
-                            juegos.map((Objeto)=>{
+                            juegos.forEach((Objeto)=>{
                                 Games.push(Objeto);
                                 Datos.push({"PuntajeMetacritic":Objeto["metacritic"],
                                             "Nombre":Objeto["name"]});
@@ -148,10 +146,7 @@ function TopPageMetacritic() {
                         <Row xs={1} md={3} lg={4} className="g-4">
                             {
                                 Top.map((Objeto, index)=>{
-                                    {
-                                            return <Col key={index}><TopCard Info = {Games[index]} Numero={(index+1 + (currentPage-1)*20)} Nombre={Objeto.Nombre} url={Objeto.url} Global={"Puntaje Metacritic: "+Objeto.PuntajeMetacritic} All={"Fecha de Salida: "+Objeto.AnioSalida+" Género: "+Objeto.Genero} /> </Col>                                           
-                                    }
-                                    
+                                    return <Col key={index}><TopCard Info = {Games[index]} Numero={(index+1 + (currentPage-1)*20)} Nombre={Objeto.Nombre} url={Objeto.url} Global={"Puntaje Metacritic: "+Objeto.PuntajeMetacritic} All={"Fecha de Salida: "+Objeto.AnioSalida+" Género: "+Objeto.Genero} /> </Col>                                           
                                 })
                             }
                             
