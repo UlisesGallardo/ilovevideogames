@@ -1,6 +1,7 @@
 import { Container , Row, Col, Button } from 'react-bootstrap';
 import TopCard from './TopCard';
-import react, {useEffect, useState, forwardRef} from "react"
+import {useEffect, useState, forwardRef} from "react"
+import React from 'react'
 import axios from 'axios';
 import ReactLoading from 'react-loading';
 import dotenv from "dotenv";

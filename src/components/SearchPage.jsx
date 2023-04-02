@@ -1,3 +1,4 @@
+import React, { Component }  from 'react';
 import { Container } from 'react-bootstrap';
 import SearchForm from './SearchForm';
 import TopCard from './TopCard';
