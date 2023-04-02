@@ -1,12 +1,9 @@
-import { Container , Row, Col, Dropdown , DropdownButton, Card, Button } from 'react-bootstrap';
+import { Container , Row, Col, Button } from 'react-bootstrap';
 import TopCard from './TopCard';
 import react, {useEffect, useState, forwardRef} from "react"
 import axios from 'axios';
-import {useLocation} from 'react-router-dom';
-import GeneralChart from "./GeneralChart"
 import ReactLoading from 'react-loading';
 import dotenv from "dotenv";
-import Form from "react-bootstrap/Form";
 import Pagination from 'react-bootstrap/Pagination';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
@@ -16,7 +13,6 @@ import "react-datepicker/dist/react-datepicker.css";
 function TopPageMetacritic() {
     dotenv.config();
 
-    const location = useLocation();
     const [Top, setTop] = useState([])
     const [Nombres, setNombres] = useState([])
     const [Datos, setDatos] = useState([])
@@ -28,13 +24,6 @@ function TopPageMetacritic() {
     const [isOpen, setIsOpen] = useState(false);
     const [Games, setGames] = useState([]);
 
-    const handleChange = (e) => {
-        setIsOpen(!isOpen);
-        setStartDate(e);
-    };
-   
-
-    const [colors, setColors] = useState([])
     let pages = [...Array(5).keys()].map( i => i+1);
 
     const restart = () => {
