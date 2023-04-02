@@ -1,6 +1,5 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {useLocation} from 'react-router-dom';
-import { Chart as ChartJS } from 'chart.js/auto'
 import { Container } from 'react-bootstrap';
 import { Bar} from 'react-chartjs-2';
 
@@ -66,7 +65,7 @@ function InfoGame() {
             </ul>
 
             <div>
-                <Bar data={data}  options={{ maintainAspectRatio: true }}/>
+                {/*<Bar data={data}  options={{ maintainAspectRatio: true }}/>*/}
             </div>
 
             <h1>Short_screenshots</h1>

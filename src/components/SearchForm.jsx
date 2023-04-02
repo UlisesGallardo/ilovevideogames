@@ -13,8 +13,6 @@ function SearchForm() {
 
         var nombre = "Wii Sports";
         const columns = ["Nombre"];
-        var orderby = "";
-        var order = "";
     
         nombre = document.getElementById('Nombre').value
     

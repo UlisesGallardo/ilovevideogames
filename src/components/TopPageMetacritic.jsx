@@ -19,7 +19,6 @@ function TopPageMetacritic() {
     const [Datos, setDatos] = useState([])
     const [loading, setLoading] = useState(false)
     const [currentPage, setCurrentPage] = useState(1);
-    const [prevPage, setPrevPage] = useState(1)
     const [year, setYear] = useState((new Date()).getFullYear()-1)
     const [startDate, setStartDate] = useState(new Date("01-01-"+year))
     const [isOpen, setIsOpen] = useState(false);
@@ -36,7 +35,7 @@ function TopPageMetacritic() {
     }
 
     const paginationClicked = (itemClicked) => {
-        if(currentPage!=itemClicked){
+        if(currentPage!==itemClicked){
             console.log("Elemento: ",itemClicked);
             restart();
             setCurrentPage(itemClicked); 
@@ -47,23 +46,13 @@ function TopPageMetacritic() {
         const d = new Date(date);
         const anio = d.getFullYear();
         console.log("Año:",anio);
-        if(year!=d.anio){
+        if(year!==d.anio){
             setStartDate(date);
             setIsOpen(false);
             setYear(anio);
             restart();
         }
     }
-    const handleClick = (e) => {
-        e.preventDefault();
-        setIsOpen(!isOpen);
-    };
-
-    const addDays = (date, days)  =>{
-        var result = new Date(date);
-        result.setDate(result.getDate() + days);
-        return result;
-      }
 
     useEffect(()=>{
             //console.log("Datos Local Storage", JSON.parse(localStorage.getItem("Datos")))
@@ -100,15 +89,15 @@ function TopPageMetacritic() {
                             juegos.map((Objeto)=>{
                                 Games.push(Objeto);
                                 Datos.push({"PuntajeMetacritic":Objeto["metacritic"],
-                                            "Nombre":Objeto["name"]})
+                                            "Nombre":Objeto["name"]});
                                 
-                                Nombres.push(Objeto["name"])
+                                Nombres.push(Objeto["name"]);
 
                                 Top.push({"PuntajeMetacritic":Objeto["metacritic"]?Objeto["metacritic"]:"No puntuado",
                                         "Nombre":Objeto["name"],
                                         "AnioSalida":Objeto["released"],
                                         "Genero": Objeto["genres"].length ? Objeto["genres"][0]["name"] : "No definido",
-                                        "url":Objeto["background_image"]})
+                                        "url":Objeto["background_image"]});
                             })
 
                             localStorage.setItem("Datos"+(year)+"-"+(currentPage),JSON.stringify(Datos));
@@ -160,11 +149,7 @@ function TopPageMetacritic() {
                             {
                                 Top.map((Objeto, index)=>{
                                     {
-                                    
-                                            return <div key={index}>
-                                                    <Col ><TopCard Info = {Games[index]} Numero={(index+1 + (currentPage-1)*20)} Nombre={Objeto.Nombre} url={Objeto.url} Global={"Puntaje Metacritic: "+Objeto.PuntajeMetacritic} All={"Fecha de Salida: "+Objeto.AnioSalida+" Género: "+Objeto.Genero} /> </Col>                                       
-                                            </div>
-                                    
+                                            return <Col key={index}><TopCard Info = {Games[index]} Numero={(index+1 + (currentPage-1)*20)} Nombre={Objeto.Nombre} url={Objeto.url} Global={"Puntaje Metacritic: "+Objeto.PuntajeMetacritic} All={"Fecha de Salida: "+Objeto.AnioSalida+" Género: "+Objeto.Genero} /> </Col>                                           
                                     }
                                     
                                 })

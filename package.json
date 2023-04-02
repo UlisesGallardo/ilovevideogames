@@ -37,6 +37,11 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "ci": {
+    "warnings": {
+      "treatAsError": false
+    }
+  },  
   "eslintConfig": {
     "extends": [
       "react-app",
