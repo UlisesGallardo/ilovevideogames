@@ -120,7 +120,7 @@ function TopPageMetacritic() {
     return (
         <div width="100%">
             <br></br><br></br><br></br>
-            <div className='d-flex justify-content-center'> <h1 className="display-1" style={{"fontSize":"4rem", color:"black"}}>Top Juegos Mejores Puntuados Metacritic {year}</h1></div>
+            <div className='d-flex justify-content-center'> <h1 className="display-1" style={{"fontSize":"4rem", color:"black"}}>Top Juegos Metacritic {year}</h1></div>
             <Container className='mt-5 mb-5'>
             <Col ><h3>Filtros</h3>       
                         <Container>
