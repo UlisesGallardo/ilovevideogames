@@ -1,0 +1,10 @@
+{
+    "extensions": {
+        "http": {
+            "routePrefix": "",
+            "swagger": {
+                "enabled": true
+            }
+        }
+    }
+}

@@ -10,11 +10,12 @@ function NavbarLateral() {
                     <Navbar.Brand href="/">
                         iLoveVideoGames
                     </Navbar.Brand>  
-
+                    {/*
                     <Nav  className="me-auto">
                         <Nav.Link href="/">Juegos Indie</Nav.Link>
                         <Nav.Link href="/arteGenerativo">Arte generativo</Nav.Link>
-                    </Nav>
+                    </Nav>*/
+                    }
                 </Container>
             </Navbar>
         </div>

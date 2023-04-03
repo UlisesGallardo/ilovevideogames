@@ -20,7 +20,8 @@ function InfoGame() {
     const labels = ['exceptional', 'recommended', 'meh', 'skip'];
     const values = ratings.map((item) => item["count"])
     //console.log(titulos, porcentaje, labels)
-
+    console.log("entrando a la información del juego");
+    
     const data = {
       labels,
       datasets: [
@@ -87,7 +88,7 @@ function InfoGame() {
         </Container>     
         { short_screenshots && short_screenshots.length > 0 &&
                 <Container fluid>
-                  <p className="fs-2">Short_screenshots</p>
+                  <p className="fs-4">Short_screenshots</p>
 
                   <ResponsiveMasonry
                       columnsCountBreakPoints={{350: 1, 750: 2, 900: 2}}
