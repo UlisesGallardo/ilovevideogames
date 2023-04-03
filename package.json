@@ -33,15 +33,10 @@
   },
   "scripts": {
     "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts --openssl-legacy-provider build --silent",
+    "build": "react-scripts --openssl-legacy-provider build",
     "test": "echo 'Tests temporarily disabled'",
     "eject": "react-scripts eject"
-  },
-  "ci": {
-    "warnings": {
-      "treatAsError": false
-    }
-  },  
+  }, 
   "eslintConfig": {
     "extends": [
       "react-app",
