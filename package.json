@@ -16,6 +16,7 @@
     "google-search-results-nodejs": "^2.0.1",
     "history": "^5.1.0",
     "igdb-api-node": "^5.0.2",
+    "node": "^19.8.1",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
     "react-chartjs-2": "^4.0.0",
@@ -32,11 +33,11 @@
     "yarn": "^1.22.19"
   },
   "scripts": {
-    "start": "react-scripts --openssl-legacy-provider start",
-    "build": "react-scripts build",
+    "build": "react-scripts build --openssl-legacy-provider",
+    "start": "react-scripts start --openssl-legacy-provider",
     "test": "echo 'Tests temporarily disabled'",
     "eject": "react-scripts eject"
-  }, 
+  },
   "eslintConfig": {
     "extends": [
       "react-app",
