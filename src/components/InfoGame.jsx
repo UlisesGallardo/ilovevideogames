@@ -1,32 +1,26 @@
 import React from 'react'
 import {useLocation} from 'react-router-dom';
-import { Container } from 'react-bootstrap';
-//import { Bar} from 'react-chartjs-2';
-
+import { Container , ListGroup, Image, Row, Col } from 'react-bootstrap';
+import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
+import Chart from 'chart.js/auto'
+import { Bar } from 'react-chartjs-2';
 
 function InfoGame() {
     const location = useLocation(); 
     var informacion = location.state.Info;
     console.log(informacion);
 
-
     var platforms = informacion["platforms"];
     var stores = informacion["stores"];
     var ratings = informacion["ratings"];
     var short_screenshots = informacion["short_screenshots"];
+    var genres = informacion["genres"];
 
-    var titulos = []
-    var porcentaje = []
-    for (const item of ratings) {
-      titulos.push(item["title"])
-      porcentaje.push(item["percent"])
-    }
-
-    //const labels = ['exceptional', 'recommended', 'meh', 'skip'];
-    //const values = ratings.map((item) => item["count"])
+    const labels = ['exceptional', 'recommended', 'meh', 'skip'];
+    const values = ratings.map((item) => item["count"])
     //console.log(titulos, porcentaje, labels)
 
-    /*const data = {
+    const data = {
       labels,
       datasets: [
         {
@@ -35,48 +29,81 @@ function InfoGame() {
           backgroundColor: 'rgba(205, 92, 92, 1)',
         }
       ],
-    };*/
+    };
 
     return (
-        <Container>
+      <>
+        <Container fluid>
           <div>
               <center><h1>{informacion['name'] }</h1></center>
-              
-            <ul>
-                {platforms.map((item, index) => ( 
-                  <div key={index}>
-                    <div>{item["platform"]["name"]}</div>
-                    
-                  </div>
-                ))}
-            </ul>
 
-            <p>Dónde comprar?</p>
+            <Row xs="auto">
+              <Col>
+                {platforms && platforms.length > 0 &&
+                  <Container>
+                      <p className="fs-4">Plataformas</p>
+                      <ListGroup key={"xl"} horizontal={"xl"} className="my-2">
+                        { platforms.map((item, index) => ( 
+                              <ListGroup.Item key={index}>{item["platform"]["name"]}</ListGroup.Item>
+                          ))}
+                      </ListGroup>
+                  </Container>
+                } 
+              </Col>
+              <Col>
+                {stores && stores.length>0 && 
+                <Container fluid>
+                    <p className="fs-4">Tiendas</p>
+                    <ListGroup horizontal> 
+                    {stores.map((item, index) => ( 
+                          <ListGroup.Item key={index}>{item["store"]["name"]}</ListGroup.Item>
+                      ))}
+                  </ListGroup>
+                </Container>
+                }
+              </Col>
 
-            <ul>
-                {stores && stores.map((item, index) => ( 
-                  <div key={index}>
-                    <div>{item["store"]["name"]}</div>
-                    
-                  </div>
-                ))}
-            </ul>
+              <Col>
+                {genres && genres.length>0 && 
+                <Container fluid>
+                    <p className="fs-4">Generos</p>
+                    <ListGroup horizontal> 
+                    {genres.map((item, index) => ( 
+                          <ListGroup.Item key={index}>{item["name"]}</ListGroup.Item>
+                      ))}
+                  </ListGroup>
+                </Container>
+                }
+              </Col>
+            </Row>
 
-            <div>
-                {/*<Bar data={data}  options={{ maintainAspectRatio: true }}/>*/}
-            </div>
+            <Container fluid="sm">
+                {<Bar data={data}  options={{ maintainAspectRatio: true }}/>}
+            </Container>  
 
-            <h1>Short_screenshots</h1>
-            <ul>
-                {short_screenshots.map((item, index) => ( 
-                  <div key={index}>
-                      <img src={item["image"]} className='img-fluid shadow-4' alt='...' />
-                  </div>
-                ))}
-            </ul>
           </div>
           
-        </Container>      
+        </Container>     
+        { short_screenshots && short_screenshots.length > 0 &&
+                <Container fluid>
+                  <p className="fs-2">Short_screenshots</p>
+
+                  <ResponsiveMasonry
+                      columnsCountBreakPoints={{350: 1, 750: 2, 900: 2}}
+                  >
+                      <Masonry>
+                        {short_screenshots.map((item, index) => ( 
+                          <div key={index}>
+                              <Image src={item["image"]}  alt='...' style={{width:"100%", display: "block"}}/>
+                          </div>
+                        ))}
+                      </Masonry>
+                  </ResponsiveMasonry>
+
+
+                </Container>
+              }    
+        </> 
       )
 }
 
