@@ -2,8 +2,7 @@ import React from 'react'
 import {useLocation} from 'react-router-dom';
 import { Container , ListGroup, Image, Row, Col } from 'react-bootstrap';
 import Masonry, {ResponsiveMasonry} from "react-responsive-masonry"
-//import Chart from 'chart.js/auto'
-import Chart from 'chart.js/auto';    
+import 'chart.js/auto';    
 
 import { Bar } from 'react-chartjs-2';
 
