@@ -24,6 +24,13 @@ function App() {
 export default App;*/
 
 import React, { useState, useEffect } from 'react';
+import './App.css';
+import NavbarLateral from './components/navbar';
+import TopPageMetacritic from "./components/TopPageMetacritic"
+import 'bootstrap/dist/css/bootstrap.min.css';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import InfoGame from './components/InfoGame';
+import ImageGenerationForm from './components/ImageGenerationForm';
 
 function App() {
   const [data, setData] = useState('');
@@ -35,7 +42,18 @@ function App() {
     })();
   });
 
-  return <div>{data}</div>;
+  return <div>
+    <BrowserRouter>
+      <NavbarLateral/>
+      <Routes>
+        <Route path="/" element={<TopPageMetacritic/>}/>
+        <Route path="/info" element={<InfoGame/>}/>
+        <Route path="/TopPageMetacritic" element={<TopPageMetacritic/>}/>
+        <Route path="/arteGenerativo" element={<ImageGenerationForm/>}/>
+      </Routes>
+    </BrowserRouter>
+  {data}
+</div>;
 }
 
 export default App;

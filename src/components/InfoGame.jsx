@@ -33,6 +33,8 @@ function InfoGame() {
       ],
     };
 
+    console.log("Entrando a la pagina de:  %s ", informacion['name']);
+
     return (
       <>
         <Container fluid>
