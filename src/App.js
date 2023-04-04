@@ -1,4 +1,4 @@
-import './App.css';
+/*import './App.css';
 import React from "react";
 import NavbarLateral from './components/navbar';
 import TopPageMetacritic from "./components/TopPageMetacritic"
@@ -19,6 +19,23 @@ function App() {
       </Routes>
     </BrowserRouter>
   );
+}
+
+export default App;*/
+
+import React, { useState, useEffect } from 'react';
+
+function App() {
+  const [data, setData] = useState('');
+
+  useEffect(() => {
+    (async function () {
+      const { text } = await( await fetch(`/api/message`)).json();
+      setData(text);
+    })();
+  });
+
+  return <div>{data}</div>;
 }
 
 export default App;
